@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Mini-Cloud/controller"
 	"fmt"
 	"net/http"
 	"os"
@@ -10,7 +11,12 @@ import (
 func main() {
 	fmt.Println("web server start...")
 
-	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./images"))))
+	//web
+	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./images"))))
+
+	//router
+	http.HandleFunc("/api/test", controller.Api.Test)
+
 	go http.ListenAndServe(":8090", nil)
 
 	sigc := make(chan os.Signal)

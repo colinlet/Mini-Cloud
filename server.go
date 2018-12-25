@@ -13,9 +13,10 @@ func main() {
 
 	//web
 	http.Handle("/wechat/", http.StripPrefix("/wechat/", http.FileServer(http.Dir("./images"))))
+	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./images"))))
 
 	//router
-	http.HandleFunc("/api/test", controller.Api.Test)
+	http.HandleFunc("/api/", controller.Api.Run)
 
 	go http.ListenAndServe(":80", nil)
 

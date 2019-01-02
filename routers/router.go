@@ -1,9 +1,10 @@
 package routers
 
 import (
+	"github.com/gin-gonic/gin"
+
 	"Mini-Cloud/pkg/setting"
 	"Mini-Cloud/routers/api/v1"
-	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
@@ -17,6 +18,8 @@ func InitRouter() *gin.Engine {
 
 	apiv1 := r.Group("/api/v1")
 	{
+		apiv1.GET("/test", v1.GetTest)
+
 		//获取标签列表
 		apiv1.GET("/tags", v1.GetTags)
 		//新建标签

@@ -18,7 +18,7 @@ func main() {
 	//router
 	http.HandleFunc("/api/", controller.Api.Run)
 
-	go http.ListenAndServe(":80", nil)
+	go http.ListenAndServe(":8080", nil)
 
 	sigc := make(chan os.Signal)
 	signal.Notify(sigc, os.Interrupt)

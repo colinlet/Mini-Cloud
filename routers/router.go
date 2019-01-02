@@ -2,21 +2,22 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 
 	"Mini-Cloud/pkg/setting"
 	"Mini-Cloud/routers/api/v1"
 )
 
 func InitRouter() *gin.Engine {
-	r := gin.New()
+	router := gin.New()
 
-	r.Use(gin.Logger())
+	router.Use(gin.Logger())
 
-	r.Use(gin.Recovery())
+	router.Use(gin.Recovery())
 
 	gin.SetMode(setting.RunMode)
 
-	apiv1 := r.Group("/api/v1")
+	apiv1 := router.Group("/api/v1")
 	{
 		apiv1.GET("/test", v1.GetTest)
 
@@ -30,5 +31,8 @@ func InitRouter() *gin.Engine {
 		apiv1.DELETE("/tags/:id", v1.DeleteTag)
 	}
 
-	return r
+	//图片资源
+	router.StaticFS("/images", http.Dir("./images"))
+
+	return router
 }

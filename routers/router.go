@@ -19,6 +19,8 @@ func InitRouter() *gin.Engine {
 
 	apiv1 := router.Group("/api/v1")
 	{
+		apiv1.GET("/getCategory", v1.Category.GetList)
+
 		apiv1.GET("/test", v1.GetTest)
 
 		//获取标签列表

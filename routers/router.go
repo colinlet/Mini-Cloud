@@ -19,7 +19,19 @@ func InitRouter() *gin.Engine {
 
 	apiv1 := router.Group("/api/v1")
 	{
-		apiv1.GET("/getCategory", v1.Category.GetList)
+		//首页
+		apiv1.GET("/home/slideshow", v1.Home.GetSlideshow) //获取轮播图
+		apiv1.GET("/home/list", v1.Home.GetList)           //获取首页商品
+
+		//分类
+		apiv1.GET("/category/list", v1.Category.GetList) //获取分类
+
+		//地址
+		apiv1.GET("/address/list", nil) //获取地址
+		//新增地址
+		//编辑地址
+
+		//获取订单
 
 		apiv1.GET("/test", v1.GetTest)
 

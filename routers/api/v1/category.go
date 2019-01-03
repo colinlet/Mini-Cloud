@@ -13,7 +13,7 @@ var Category = &category{}
 
 type category struct{}
 
-func (*category) GetList(c *gin.Context) {
+func (this *category) GetList(c *gin.Context) {
 
 	maps := make(map[string]interface{})
 	data := make(map[string]interface{})

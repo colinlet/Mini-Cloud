@@ -12,6 +12,8 @@ type goods struct {
 	Price       int32  `json:"price"`
 	OriginPrice int32  `json:"origin_price"`
 	CategoryId  int32  `json:"category_id"`
+	Showcase    string `json:"showcase"`
+	List        string `json:"list"`
 }
 
 func (*goodsModel) GetList(pageNum int, pageSize int, maps interface{}) (list []goods) {
@@ -21,5 +23,10 @@ func (*goodsModel) GetList(pageNum int, pageSize int, maps interface{}) (list []
 
 func (*goodsModel) GetTotal(maps interface{}) (count int) {
 	db.Model(&goods{}).Where(maps).Count(&count)
+	return
+}
+
+func (*goodsModel) Get(maps interface{}) (data goods) {
+	db.Where(maps).Find(&data)
 	return
 }

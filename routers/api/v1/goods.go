@@ -40,3 +40,22 @@ func (*goods) GetList(c *gin.Context) {
 		"data": data,
 	})
 }
+
+func (*goods) Get(c *gin.Context) {
+	goodsId := c.Query("id")
+
+	maps := make(map[string]interface{})
+	maps["id"] = goodsId
+	data := models.Goods.Get(maps)
+
+	sec, _ := setting.Cfg.GetSection("app")
+	data.Img = sec.Key("CDN").MustString("")
+
+	code := e.SUCCESS
+
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"data": data,
+	})
+}

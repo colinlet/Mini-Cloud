@@ -4,7 +4,6 @@ import (
 	"Mini-Cloud/models"
 	"Mini-Cloud/pkg/e"
 	"Mini-Cloud/pkg/setting"
-	"Mini-Cloud/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -13,15 +12,26 @@ var Category = &category{}
 
 type category struct{}
 
-func (this *category) GetList(c *gin.Context) {
+func (*category) GetList(c *gin.Context) {
+	pid := c.Query("pid")
+	if pid == "" {
+		pid = "0"
+	}
 
-	maps := make(map[string]interface{})
 	data := make(map[string]interface{})
+	list := models.Category.GetList(pid)
+
+	sec, _ := setting.Cfg.GetSection("app")
+	for key, value := range list {
+		if value.Img != "" {
+			list[key].Img = sec.Key("CDN").MustString("") + value.Img
+		}
+	}
+
+	data["list"] = list
+	data["total"] = models.Category.GetTotal(pid)
 
 	code := e.SUCCESS
-
-	data["lists"] = models.Category.GetList(util.GetPage(c), setting.PageSize, maps)
-	data["total"] = models.Category.GetTotal(maps)
 
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,

@@ -24,7 +24,7 @@ func InitRouter() *gin.Engine {
 		apiv1.GET("/home/list", v1.Home.GetList)           //获取首页商品
 
 		//分类
-		apiv1.GET("/category/list", v1.Category.GetList) //获取分类
+		apiv1.GET("/category/getList", v1.Category.GetList) //获取分类
 
 		//地址
 		apiv1.GET("/address/list", nil) //获取地址

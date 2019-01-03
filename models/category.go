@@ -11,12 +11,12 @@ type category struct {
 	Img  string `json:"img"`
 }
 
-func (*m) GetList(pageNum int, pageSize int, maps interface{}) (list []category) {
-	db.Where(maps).Offset(pageNum).Limit(pageSize).Find(&list)
+func (*m) GetList(pid string) (list []category) {
+	db.Where("pid = ?", pid).Find(&list)
 	return
 }
 
-func (*m) GetTotal(maps interface{}) (count int) {
-	db.Model(&category{}).Where(maps).Count(&count)
+func (*m) GetTotal(pid string) (count int) {
+	db.Model(&category{}).Where("pid = ?", pid).Count(&count)
 	return
 }

@@ -1,11 +1,12 @@
 package models
 
 import (
-	"Mini-Cloud/pkg/setting"
-	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
+
+	"Mini-Cloud/pkg/setting"
+	"fmt"
 )
 
 var db *gorm.DB

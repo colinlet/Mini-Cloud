@@ -60,6 +60,29 @@ func (*user) Login(c *gin.Context) {
 	})
 }
 
-func (this *user) GetInfo(c *gin.Context) {
+func (*user) GetInfo(c *gin.Context) {
+	session := c.Query("session")
+	info := models.User.GetInfo(session)
 
+	code := e.SUCCESS
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"data": info,
+	})
+}
+
+func (*user) SetInfo(c *gin.Context) {
+	session := c.PostForm("session")
+	avatarUrl := c.PostForm("avatarUrl")
+	nickName := c.PostForm("nickName")
+
+	user := models.User.GetBySession(session)
+	models.User.UpdateInfo(user.Id, map[string]interface{}{"avatar_url": avatarUrl, "nick_name": nickName})
+
+	code := e.SUCCESS
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+	})
 }

@@ -1,10 +1,17 @@
 package models
 
-import "Mini-Cloud/entity"
+import (
+	"Mini-Cloud/entity"
+	"fmt"
+)
 
 var User = &userModel{}
 
 type userModel struct{}
+
+func (*userModel) table() string {
+	return "mc_user"
+}
 
 func (*userModel) GetByOpenid(openid string) (data entity.User) {
 	db.Where("openid = ?", openid).Find(&data)
@@ -19,12 +26,17 @@ func (*userModel) Update(id int32, maps map[string]interface{}) {
 	db.Model(&entity.User{}).Where("id = ?", id).Update(maps)
 }
 
-func (*userModel) GetList(pid string) (list []entity.User) {
-	db.Where("pid = ?", pid).Find(&list)
+func (this *userModel) GetInfo(session string) (data entity.UserInfo) {
+	db.Table(this.table()).Where("session = ?", session).Scan(&data)
 	return
 }
 
-func (*userModel) GetTotal(pid string) (count int) {
-	db.Model(&entity.User{}).Where("pid = ?", pid).Count(&count)
+func (this *userModel) GetBySession(session string) (data entity.User) {
+	db.Where("session = ?", session).Find(&data)
 	return
+}
+
+func (this *userModel) UpdateInfo(id int32, maps map[string]interface{}) {
+	fmt.Println(maps)
+	db.Table(this.table()).Where("id = ?", id).Update(maps)
 }

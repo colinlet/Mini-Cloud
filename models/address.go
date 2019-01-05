@@ -1,22 +1,24 @@
 package models
 
+import "Mini-Cloud/entity"
+
 var Address = &addressModel{}
 
 type addressModel struct{}
 
-type address struct {
-	Id   int32  `json:"id"`
-	Pid  int32  `json:"pid"`
-	Name string `json:"name"`
-	Img  string `json:"img"`
+func (*addressModel) table() string {
+	return "mc_address"
 }
 
-func (*addressModel) GetList(pid string) (list []address) {
-	db.Where("pid = ?", pid).Find(&list)
-	return
+func (this *addressModel) Insert(data *entity.UserAddress) {
+	db.Table(this.table()).Create(&data)
 }
 
-func (*addressModel) GetTotal(pid string) (count int) {
-	db.Model(&address{}).Where("pid = ?", pid).Count(&count)
+func (this *addressModel) UpdateStatus(mid int32, maps map[string]interface{}) {
+	db.Table(this.table()).Where("mid = ?", mid).Update(maps)
+}
+
+func (this *addressModel) GetList(mid int32) (list []entity.UserAddress) {
+	db.Table(this.table()).Where("mid = ?", mid).Find(&list)
 	return
 }

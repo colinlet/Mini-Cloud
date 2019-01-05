@@ -86,3 +86,52 @@ func (*user) SetInfo(c *gin.Context) {
 		"msg":  e.GetMsg(code),
 	})
 }
+
+func (*user) AddAddress(c *gin.Context) {
+	session := c.PostForm("session")
+	userName := c.PostForm("user_name")
+	postalCode := c.PostForm("postal_code")
+	provinceName := c.PostForm("province_name")
+	cityName := c.PostForm("city_name")
+	countyName := c.PostForm("county_name")
+	detailInfo := c.PostForm("detail_info")
+	nationalCode := c.PostForm("national_code")
+	telNumber := c.PostForm("tel_number")
+
+	user := models.User.GetBySession(session)
+
+	models.Address.UpdateStatus(user.Id, map[string]interface{}{"is_use": 0})
+
+	address := &entity.UserAddress{
+		Mid:          user.Id,
+		UserName:     userName,
+		PostalCode:   postalCode,
+		ProvinceName: provinceName,
+		CityName:     cityName,
+		CountyName:   countyName,
+		DetailInfo:   detailInfo,
+		NationalCode: nationalCode,
+		TelNumber:    telNumber,
+		IsUse:        1,
+	}
+	models.Address.Insert(address)
+
+	code := e.SUCCESS
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+	})
+}
+
+func (*user) GetAddress(c *gin.Context) {
+	session := c.Query("session")
+	user := models.User.GetBySession(session)
+	list := models.Address.GetList(user.Id)
+
+	code := e.SUCCESS
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"list": list,
+	})
+}

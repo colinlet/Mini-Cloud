@@ -1,22 +1,26 @@
 package models
 
+import "Mini-Cloud/entity"
+
 var User = &userModel{}
 
 type userModel struct{}
 
-type user struct {
-	Id   int32  `json:"id"`
-	Pid  int32  `json:"pid"`
-	Name string `json:"name"`
-	Img  string `json:"img"`
+func (*userModel) GetByOpenid(openid string) (data entity.User) {
+	db.Where("openid = ?", openid).Find(&data)
+	return
 }
 
-func (*userModel) GetList(pid string) (list []user) {
+func (*userModel) Insert(maps interface{}) {
+	db.NewRecord(maps)
+}
+
+func (*userModel) GetList(pid string) (list []entity.User) {
 	db.Where("pid = ?", pid).Find(&list)
 	return
 }
 
 func (*userModel) GetTotal(pid string) (count int) {
-	db.Model(&user{}).Where("pid = ?", pid).Count(&count)
+	db.Model(&entity.User{}).Where("pid = ?", pid).Count(&count)
 	return
 }

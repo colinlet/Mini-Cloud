@@ -1,22 +1,17 @@
 package models
 
+import "Mini-Cloud/entity"
+
 var Category = &categoryModel{}
 
 type categoryModel struct{}
 
-type category struct {
-	Id   int32  `json:"id"`
-	Pid  int32  `json:"pid"`
-	Name string `json:"name"`
-	Img  string `json:"img"`
-}
-
-func (*categoryModel) GetList(pid string) (list []category) {
+func (*categoryModel) GetList(pid string) (list []entity.Category) {
 	db.Where("pid = ?", pid).Find(&list)
 	return
 }
 
 func (*categoryModel) GetTotal(pid string) (count int) {
-	db.Model(&category{}).Where("pid = ?", pid).Count(&count)
+	db.Model(&entity.Category{}).Where("pid = ?", pid).Count(&count)
 	return
 }

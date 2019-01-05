@@ -7,6 +7,7 @@ type User struct {
 }
 
 type UserInfo struct {
+	Id        int32  `json:"mid"`
 	NickName  string `json:"nick_name"`
 	AvatarUrl string `json:"avatar_url"`
 }

@@ -2,7 +2,6 @@ package models
 
 import (
 	"Mini-Cloud/entity"
-	"fmt"
 )
 
 var User = &userModel{}
@@ -37,6 +36,5 @@ func (this *userModel) GetBySession(session string) (data entity.User) {
 }
 
 func (this *userModel) UpdateInfo(id int32, maps map[string]interface{}) {
-	fmt.Println(maps)
 	db.Table(this.table()).Where("id = ?", id).Update(maps)
 }

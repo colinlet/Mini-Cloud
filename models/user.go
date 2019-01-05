@@ -11,8 +11,12 @@ func (*userModel) GetByOpenid(openid string) (data entity.User) {
 	return
 }
 
-func (*userModel) Insert(maps interface{}) {
-	db.NewRecord(maps)
+func (*userModel) Insert(data *entity.User) {
+	db.Create(&data)
+}
+
+func (*userModel) Update(id int32, maps map[string]interface{}) {
+	db.Model(&entity.User{}).Where("id = ?", id).Update(maps)
 }
 
 func (*userModel) GetList(pid string) (list []entity.User) {

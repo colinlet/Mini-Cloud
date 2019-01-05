@@ -1,14 +1,14 @@
 package v1
 
 import (
+	"Mini-Cloud/entity"
 	"Mini-Cloud/models"
 	"Mini-Cloud/pkg/e"
+	"Mini-Cloud/pkg/setting"
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
-
-	"Mini-Cloud/pkg/setting"
-	"fmt"
 	"net/http"
 )
 
@@ -16,8 +16,7 @@ var User = &user{}
 
 type user struct{}
 
-func (this *user) Login(c *gin.Context) {
-
+func (*user) Login(c *gin.Context) {
 	jsCode := c.Query("code")
 	sec, _ := setting.Cfg.GetSection("app")
 	uri := fmt.Sprintf(
@@ -28,31 +27,31 @@ func (this *user) Login(c *gin.Context) {
 		jsCode,
 		"authorization_code",
 	)
-	type wxS struct {
-		Errcode    int32  `json:"errcode"`
-		Errmsg     string `json:"errmsg"`
-		Openid     string `json:"openid"`
-		SessionKey string `json:"session_key"`
-	}
+
+	//获取微信信息
 	resp, _ := http.Get(uri)
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
-	data := new(wxS)
+	data := new(entity.Code2Session)
 	json.Unmarshal(body, &data)
 
 	//测试数据
-	data.SessionKey = jsCode[0:6]
-	data.Openid = jsCode[0:6]
+	data.SessionKey = jsCode[0:12]
+	data.Openid = jsCode[len(jsCode)-12 : len(jsCode)-0]
 
 	//登录注册
 	user := models.User.GetByOpenid(data.Openid)
-
-	if user.Id > 0 {
-		fmt.Println(user)
+	if user.Id < 1 {
+		userData := &entity.User{
+			Openid:  data.Openid,
+			Session: data.SessionKey,
+		}
+		models.User.Insert(userData)
+	} else {
+		models.User.Update(user.Id, map[string]interface{}{"session": data.SessionKey})
 	}
 
-	data.SessionKey = jsCode[0:6]
-
+	//返回数据
 	code := e.SUCCESS
 	c.JSON(http.StatusOK, gin.H{
 		"code":    code,

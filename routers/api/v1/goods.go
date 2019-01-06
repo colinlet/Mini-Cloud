@@ -20,6 +20,7 @@ func (*goods) GetList(c *gin.Context) {
 	data := make(map[string]interface{})
 
 	maps["category_id"] = categoryId
+	maps["status"] = 1
 	list := models.Goods.GetList(util.GetPage(c), setting.PageSize, maps)
 
 	sec, _ := setting.Cfg.GetSection("app")

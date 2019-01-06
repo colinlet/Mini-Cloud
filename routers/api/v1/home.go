@@ -6,7 +6,6 @@ import (
 	"Mini-Cloud/pkg/e"
 	"Mini-Cloud/pkg/setting"
 	"Mini-Cloud/pkg/util"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -37,6 +36,7 @@ func (*home) GetList(c *gin.Context) {
 	maps := make(map[string]interface{})
 	data := make(map[string]interface{})
 
+	maps["status"] = 1
 	raws := models.Goods.GetList(util.GetPage(c), setting.PageSize*2, maps)
 
 	//随机商品
@@ -51,7 +51,6 @@ func (*home) GetList(c *gin.Context) {
 				value.Img = sec.Key("CDN").MustString("") + value.Img
 			}
 			list[count] = value
-			fmt.Println(value)
 			count++
 		}
 	}

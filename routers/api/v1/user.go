@@ -159,8 +159,9 @@ func (*user) CurrentAddress(c *gin.Context) {
 
 	code := e.SUCCESS
 	c.JSON(http.StatusOK, gin.H{
-		"code": code,
-		"msg":  e.GetMsg(code),
-		"data": data,
+		"code":       code,
+		"msg":        e.GetMsg(code),
+		"data":       data,
+		"pay_notice": "支付还未接入，暂时无法结算",
 	})
 }

@@ -19,6 +19,8 @@ func InitRouter() *gin.Engine {
 
 	apiv1 := router.Group("/api/v1")
 	{
+		apiv1.GET("/home/slideshow", v1.Home.GetSlideshow)        //获取轮播图
+		apiv1.GET("/home/list", v1.Home.GetList)                  //获取首页商品
 		apiv1.GET("/category/getList", v1.Category.GetList)       //获取分类
 		apiv1.GET("/goods/getList", v1.Goods.GetList)             //获取商品列表
 		apiv1.GET("/goods", v1.Goods.Get)                         //获取商品
@@ -29,17 +31,6 @@ func InitRouter() *gin.Engine {
 		apiv1.POST("/user/address", v1.User.AddAddress)           //新增地址
 		apiv1.POST("/user/chooseAddress", v1.User.ChooseAddress)  //选中地址
 		apiv1.GET("/user/currentAddress", v1.User.CurrentAddress) //获取当前地址
-
-		//首页
-		apiv1.GET("/home/slideshow", v1.Home.GetSlideshow) //获取轮播图
-		apiv1.GET("/home/list", v1.Home.GetList)           //获取首页商品
-
-		//地址
-		apiv1.GET("/address/list", nil) //获取地址
-		//新增地址
-		//编辑地址
-
-		//获取订单
 	}
 
 	//图片资源

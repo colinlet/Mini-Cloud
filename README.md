@@ -1,13 +1,21 @@
 # Mini-Cloud
-如果它看起来像MINI，开起来像MINI，那么它可能就是一台MINI
 
-## 目录结构
+> 如果它看起来像MINI，开起来像MINI，那么它可能就是一台MINI
 
-```html
-├─conf //用于存储配置文件
-├─middleware //应用中间件
-├─models //应用数据库模型
-├─pkg //第三方包
-├─routers //路由逻辑处理
-├─runtime //应用运行时数据
-```
+> 提供简单HTTP接口，基于gin实现，使用MySQL持久化
+
+## 安装部署
+
+- go安装
+
+- 依赖包
+
+- nginx
+
+- HTTPS
+
+- 图片分离
+
+- MySQL
+
+## 简单使用

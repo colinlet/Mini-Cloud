@@ -135,3 +135,32 @@ func (*user) GetAddress(c *gin.Context) {
 		"list": list,
 	})
 }
+
+func (*user) ChooseAddress(c *gin.Context) {
+	session := c.PostForm("session")
+	id := c.PostForm("id")
+
+	user := models.User.GetBySession(session)
+	models.Address.UpdateStatus(user.Id, map[string]interface{}{"is_use": 0})
+	models.Address.Choose(id)
+
+	code := e.SUCCESS
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+	})
+}
+
+func (*user) CurrentAddress(c *gin.Context) {
+	session := c.Query("session")
+	user := models.User.GetBySession(session)
+
+	data := models.Address.GetCurrent(user.Id)
+
+	code := e.SUCCESS
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"data": data,
+	})
+}

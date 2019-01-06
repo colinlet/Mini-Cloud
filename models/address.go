@@ -1,6 +1,8 @@
 package models
 
-import "Mini-Cloud/entity"
+import (
+	"Mini-Cloud/entity"
+)
 
 var Address = &addressModel{}
 
@@ -20,5 +22,14 @@ func (this *addressModel) UpdateStatus(mid int32, maps map[string]interface{}) {
 
 func (this *addressModel) GetList(mid int32) (list []entity.UserAddress) {
 	db.Table(this.table()).Where("mid = ?", mid).Find(&list)
+	return
+}
+
+func (this *addressModel) Choose(id string) {
+	db.Table(this.table()).Where("id = ?", id).Update(map[string]interface{}{"is_use": 1})
+}
+
+func (this *addressModel) GetCurrent(mid int32) (data entity.UserAddress) {
+	db.Table(this.table()).Where("mid = ? AND is_use = ?", mid, 1).Find(&data)
 	return
 }

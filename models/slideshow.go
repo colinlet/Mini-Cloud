@@ -11,6 +11,6 @@ func (*slideshowModel) table() string {
 }
 
 func (this *slideshowModel) GetList() (list []entity.Slideshow) {
-	db.Table(this.table()).Find(&list)
+	db.Table(this.table()).Where("status = ?", 1).Find(&list)
 	return
 }

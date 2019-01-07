@@ -33,8 +33,7 @@ func InitRouter() *gin.Engine {
 		apiv1.GET("/user/currentAddress", v1.User.CurrentAddress) //获取当前地址
 	}
 
-	//图片资源
-	router.StaticFS("/images", http.Dir("./images"))
+	router.StaticFS("/images", http.Dir("./images")) //图片资源
 
 	return router
 }

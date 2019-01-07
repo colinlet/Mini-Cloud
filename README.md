@@ -6,9 +6,19 @@
 
 ## 安装部署
 
-- go安装
+### go安装
 
-- 依赖包
+#### gin安装
+
+> go get -u github.com/gin-gonic/gin
+
+> go get github.com/kardianos/govendor
+
+> govendor init
+
+> govendor fetch github.com/gin-gonic/gin@v1.3
+
+#### 依赖包
 
 - nginx
 

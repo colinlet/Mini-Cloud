@@ -6,6 +6,7 @@ import (
 	"Mini-Cloud/pkg/e"
 	"Mini-Cloud/pkg/setting"
 	"Mini-Cloud/pkg/util"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -45,6 +46,7 @@ func (*home) GetList(c *gin.Context) {
 	list := make([]entity.Goods, total)
 	day, _ := strconv.Atoi(time.Now().Format("02"))
 	sec, _ := setting.Cfg.GetSection("app")
+	fmt.Println("CDN地址:", sec.Key("CDN").MustString(""))
 	for _, value := range raws {
 		if count < total && day%2 == int(value.Id)%2 {
 			if value.Img != "" {

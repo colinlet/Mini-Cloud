@@ -33,7 +33,7 @@ server
         index index.html;
         root /data/workshop/src/Mini-Cloud/views/;
 
-		//https支持
+        //https support
         ssl on;
         ssl_certificate /etc/letsencrypt/live/mini.your_domain.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/mini.your_domain.com/privkey.pem;
@@ -52,7 +52,7 @@ server
         server_name mini.your_domain.com;
         index index.html;
         root /data/workshop/src/Mini-Cloud/views/;
-        return 301 https://$host$request_uri; //http重定向至https
+        return 301 https://$host$request_uri; //http redirect to https
 
         location /api {
                 proxy_set_header Host $host;

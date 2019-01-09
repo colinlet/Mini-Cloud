@@ -8,18 +8,22 @@
 
 ### 安装 MySQL(MariaDB)
 
-> yum install mariadb-server -y
-> systemctl start mariadb
-> /usr/bin/mysql_secure_installation
-> systemctl enable mariadb
+```html
+yum install mariadb-server -y
+systemctl start mariadb
+/usr/bin/mysql_secure_installation
+systemctl enable mariadb
+```
 
 ### Nginx
 
 > 安装 Nginx 目的是为了使用 80 端口 可以支持多个域名
 
-> yum install nginx -y
-> systemctl start nginx
-> systemctl enable nginx
+```html
+yum install nginx -y
+systemctl start nginx
+systemctl enable nginx
+```
 
 ```nginx
 server
@@ -62,32 +66,36 @@ server
 
 #### gin安装
 
-> go get -u github.com/gin-gonic/gin
-> go get github.com/kardianos/govendor
-> govendor init
-> govendor fetch github.com/gin-gonic/gin@v1.3
+```html
+go get -u github.com/gin-gonic/gin
+go get github.com/kardianos/govendor
+govendor init
+govendor fetch github.com/gin-gonic/gin@v1.3
+```
 
 #### 依赖包
 
-> go get -u github.com/go-ini/ini
-> go get -u github.com/Unknwon/com
-> go get -u github.com/jinzhu/gorm
-> go get -u github.com/go-sql-driver/mysql
+```html
+go get -u github.com/go-ini/ini
+go get -u github.com/Unknwon/com
+go get -u github.com/jinzhu/gorm
+go get -u github.com/go-sql-driver/mysql
+```
 
 ## HTTPS支持
 
 > 使用免费SSL证书
 
-```HTML
+```html
 git clone https://github.com/certbot/certbot
 cd certbot
 ./certbot-auto --help
 ./certbot-auto certonly --webroot --agree-tos -v -t --email yours@email.com -w /data/workshop/src/Mini-Cloud/views -d mini.your_domain.com
 ```
 
-## 图片分离
+## 静态资源
 
-> 使用CDN
+> 使用CDN加速
 
 ## 简单使用
 

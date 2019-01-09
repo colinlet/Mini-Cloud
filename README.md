@@ -1,8 +1,8 @@
 # Mini-Cloud
 
-> 如果它看起来像MINI，开起来像MINI，那么它可能就是一台MINI
+> 如果它看起来像 MINI，开起来像 MINI，那么它可能就是一台 MINI
 
-> 微信小程序简单HTTPS接口，基于gin实现，使用MySQL持久化
+> 微信小程序简单 HTTPS 接口，基于 gin 实现，使用 MySQ L持久化
 
 ## 准备工作
 
@@ -64,7 +64,7 @@ server
 
 ## 安装部署
 
-#### gin安装
+#### gin 安装
 
 ```html
 go get -u github.com/gin-gonic/gin
@@ -82,9 +82,9 @@ go get -u github.com/jinzhu/gorm
 go get -u github.com/go-sql-driver/mysql
 ```
 
-## HTTPS支持
+## HTTPS 支持
 
-> 使用免费SSL证书
+> 使用免费 SSL 证书
 
 ```html
 git clone https://github.com/certbot/certbot
@@ -95,7 +95,9 @@ cd certbot
 
 ## 静态资源
 
-> 使用CDN加速
+> 使用 CDN 加速
+
+> 吐槽下套路云: 几年没用的 OSS，一用就因欠费0.01元，不是有免费的5GB流量吗？
 
 ## 简单使用
 

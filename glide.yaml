@@ -1,0 +1,12 @@
+package: Mini-Cloud
+import:
+- package: github.com/Unknwon/com
+  version: v2
+- package: github.com/gin-gonic/gin
+  version: v1.3.0
+- package: github.com/go-ini/ini
+  version: v1.41.0
+- package: github.com/jinzhu/gorm
+  version: v1.9.2
+  subpackages:
+  - dialects/mysql

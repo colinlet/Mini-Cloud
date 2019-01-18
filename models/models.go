@@ -5,8 +5,8 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
 
-	"Mini-Cloud/pkg/setting"
 	"fmt"
+	"github.com/colinlet/Mini-Cloud/pkg/setting"
 )
 
 var db *gorm.DB

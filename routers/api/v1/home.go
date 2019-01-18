@@ -1,11 +1,11 @@
 package v1
 
 import (
-	"Mini-Cloud/entity"
-	"Mini-Cloud/models"
-	"Mini-Cloud/pkg/e"
-	"Mini-Cloud/pkg/setting"
-	"Mini-Cloud/pkg/util"
+	"github.com/colinlet/Mini-Cloud/entity"
+	"github.com/colinlet/Mini-Cloud/models"
+	"github.com/colinlet/Mini-Cloud/pkg/e"
+	"github.com/colinlet/Mini-Cloud/pkg/setting"
+	"github.com/colinlet/Mini-Cloud/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"

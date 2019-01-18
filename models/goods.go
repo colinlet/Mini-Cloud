@@ -1,6 +1,6 @@
 package models
 
-import "Mini-Cloud/entity"
+import "github.com/colinlet/Mini-Cloud/entity"
 
 var Goods = &goodsModel{}
 

@@ -1,7 +1,7 @@
 package models
 
 import (
-	"Mini-Cloud/entity"
+	"github.com/colinlet/Mini-Cloud/entity"
 )
 
 var Address = &addressModel{}

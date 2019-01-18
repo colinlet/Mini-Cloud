@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/colinlet/Mini-Cloud/pkg/setting"
+	"github.com/colinlet/Mini-Cloud/routers"
 	"net/http"
-
-	"Mini-Cloud/pkg/setting"
-	"Mini-Cloud/routers"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"github.com/Unknwon/com"
 	"github.com/gin-gonic/gin"
 
-	"Mini-Cloud/pkg/setting"
+	"github.com/colinlet/Mini-Cloud/pkg/setting"
 )
 
 func GetPage(c *gin.Context) int {

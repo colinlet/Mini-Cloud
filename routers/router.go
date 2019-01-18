@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 
-	"Mini-Cloud/pkg/setting"
-	"Mini-Cloud/routers/api/v1"
+	"github.com/colinlet/Mini-Cloud/pkg/setting"
+	"github.com/colinlet/Mini-Cloud/routers/api/v1"
 )
 
 func InitRouter() *gin.Engine {

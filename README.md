@@ -64,22 +64,8 @@ server
 
 ## 安装部署
 
-#### gin 安装
-
-```html
-go get -u github.com/gin-gonic/gin
-go get github.com/kardianos/govendor
-govendor init
-govendor fetch github.com/gin-gonic/gin@v1.3
-```
-
-#### 依赖包
-
-```html
-go get -u github.com/go-ini/ini
-go get -u github.com/Unknwon/com
-go get -u github.com/jinzhu/gorm
-go get -u github.com/go-sql-driver/mysql
+```shell
+glide install
 ```
 
 ## HTTPS 支持

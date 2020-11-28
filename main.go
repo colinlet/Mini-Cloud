@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/colinlet/Mini-Cloud/pkg/setting"
-	"github.com/colinlet/Mini-Cloud/routers"
+	"github.com/colinlet/mini_cloud/pkg/setting"
+	"github.com/colinlet/mini_cloud/routers"
 	"net/http"
 )
 
@@ -18,5 +18,5 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	s.ListenAndServe()
+	_ = s.ListenAndServe()
 }

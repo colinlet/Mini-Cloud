@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 
-	"github.com/colinlet/Mini-Cloud/pkg/setting"
-	"github.com/colinlet/Mini-Cloud/routers/api/v1"
+	"github.com/colinlet/mini_cloud/api/v1"
+	"github.com/colinlet/mini_cloud/pkg/setting"
 )
 
 func InitRouter() *gin.Engine {
@@ -33,7 +33,8 @@ func InitRouter() *gin.Engine {
 		apiv1.GET("/user/currentAddress", v1.User.CurrentAddress) //获取当前地址
 	}
 
-	router.StaticFS("/images", http.Dir("./images")) //图片资源
+	router.StaticFS("/images", http.Dir("./assets/images")) //图片资源
+	router.StaticFile("/", "./assets/views/index.html")
 
 	return router
 }

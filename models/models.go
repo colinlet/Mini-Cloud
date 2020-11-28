@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"fmt"
-	"github.com/colinlet/Mini-Cloud/pkg/setting"
+	"github.com/colinlet/mini_cloud/pkg/setting"
 )
 
 var db *gorm.DB

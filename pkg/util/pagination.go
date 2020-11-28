@@ -1,10 +1,10 @@
 package util
 
 import (
-	"github.com/Unknwon/com"
 	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 
-	"github.com/colinlet/Mini-Cloud/pkg/setting"
+	"github.com/colinlet/mini_cloud/pkg/setting"
 )
 
 func GetPage(c *gin.Context) int {

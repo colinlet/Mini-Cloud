@@ -1,10 +1,10 @@
 package v1
 
 import (
-	"github.com/colinlet/Mini-Cloud/models"
-	"github.com/colinlet/Mini-Cloud/pkg/e"
-	"github.com/colinlet/Mini-Cloud/pkg/setting"
-	"github.com/colinlet/Mini-Cloud/pkg/util"
+	"github.com/colinlet/mini_cloud/models"
+	"github.com/colinlet/mini_cloud/pkg/e"
+	"github.com/colinlet/mini_cloud/pkg/setting"
+	"github.com/colinlet/mini_cloud/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

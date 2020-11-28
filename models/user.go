@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/colinlet/Mini-Cloud/entity"
+	"github.com/colinlet/mini_cloud/entity"
 )
 
 var User = &userModel{}

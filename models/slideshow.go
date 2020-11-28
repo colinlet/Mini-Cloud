@@ -1,6 +1,6 @@
 package models
 
-import "github.com/colinlet/Mini-Cloud/entity"
+import "github.com/colinlet/mini_cloud/entity"
 
 var Slideshow = &slideshowModel{}
 
